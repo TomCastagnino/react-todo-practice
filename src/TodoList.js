@@ -25,21 +25,27 @@ class TodoList extends Component {
     }
 
     deleteTodo(todoId) {
-        console.log(todoId);
         let newItems = this.state.items.filter(todo => todo.props.id !== todoId);
         this.setState({
             items: newItems
         });
     }
 
-    editTodo(todoId) {
-
+    editTodo(todoId, newTask) {
+        const updatedTodos = this.state.items.map(todo => {
+            if(todo.props.id === todoId) {
+                let newTodo = <Todo task={newTask} key={todo.props.id} id={todo.props.id} delete={this.deleteTodo} edit={this.editTodo}/>;
+                return newTodo;
+            }
+            return todo;
+        });
+        this.setState({items: updatedTodos});
     }
 
     render() {
         return (
             <div>
-                {this.state.items}
+                <ul>{this.state.items}</ul>
                 <NewTodoForm addTodo={this.addTodo}/>
             </div>
         );
