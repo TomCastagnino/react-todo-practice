@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NewTodoForm.css';
 
 class NewTodoForm extends Component {
 
@@ -23,19 +24,16 @@ class NewTodoForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h4>New Todo</h4>
-                <div>
-                    <label htmlFor='task'>Task: </label>
-                    <input
-                        onChange={this.handleChange}
-                        id='task'
-                        name='task'
-                        value={this.state.task}
-                        placeholder='New Todo'
-                        type='text'
-                    />
-                </div>
+            <form  className='NewTodoForm' onSubmit={this.handleSubmit}>
+                <label htmlFor='task'>New Todo: </label>
+                <input
+                    onChange={this.handleChange}
+                    id='task'
+                    name='task'
+                    value={this.state.task}
+                    placeholder='New Todo'
+                    type='text'
+                />
                 <button>Add TODO</button>
             </form>
         )
